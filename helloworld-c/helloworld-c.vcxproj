@@ -132,14 +132,14 @@
     <ClCompile Include="..\helloworld\3-b3-1.c" />
     <ClCompile Include="..\helloworld\3-b4-1.c" />
     <ClCompile Include="..\helloworld\homework.c" />
-    <ClCompile Include="3-b-10-2.c" />
+    <ClCompile Include="3-b10-2.c" />
+    <ClCompile Include="3-b12-2.c" />
     <ClCompile Include="3-b13-2.c" />
     <ClCompile Include="3-b5-1.c" />
     <ClCompile Include="3-b6-1.c" />
     <ClCompile Include="3-b7-1.c" />
     <ClCompile Include="3-b8.c" />
     <ClCompile Include="3-b9.c" />
-    <ClCompile Include="c-b12-2.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

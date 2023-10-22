@@ -45,13 +45,13 @@
     <ClCompile Include="3-b9.c">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="3-b-10-2.c">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="c-b12-2.c">
+    <ClCompile Include="3-b10-2.c">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="3-b13-2.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="3-b12-2.c">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
