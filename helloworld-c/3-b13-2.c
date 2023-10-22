@@ -29,7 +29,7 @@
 //		if (status == 1 || ret == 0)
 //		{
 //			printf("输入非法，请重新输入\n");
-//			rewind(stdin);
+//			scanf("%*[^\n]");
 //		}
 //		else
 //		{

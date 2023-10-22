@@ -54,5 +54,8 @@
     <ClCompile Include="3-b12-2.c">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="4-b2-1.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

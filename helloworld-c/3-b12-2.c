@@ -13,7 +13,7 @@
 //			break;
 //		else if (ret == 0)
 //		{
-//			rewind(stdin);
+//			scanf("%*[^\n]");
 //			//getchar();
 //		}
 //		else

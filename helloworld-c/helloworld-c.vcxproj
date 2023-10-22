@@ -140,6 +140,7 @@
     <ClCompile Include="3-b7-1.c" />
     <ClCompile Include="3-b8.c" />
     <ClCompile Include="3-b9.c" />
+    <ClCompile Include="4-b2-1.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
