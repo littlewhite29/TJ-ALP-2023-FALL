@@ -1,376 +1,124 @@
-/* 2051891 黄治东 信管 */
+//2051891 信管 黄治东
 #include <iostream>
+#include <iomanip>
+#include <cmath>
 using namespace std;
 
-/* 可根据需要添加相应的内容 */
-
-/***************************************************************************
-  函数名称：
-  功    能：输出大写的0~9
-  输入参数：
-  返 回 值：
-  说    明：除本函数外，不允许任何函数中输出“零”-“玖”!!!!!!
-***************************************************************************/
-void daxie(int num, int flag_of_zero)
+int zeller(int c, int y, int m, int d)
 {
-	/* 不允许对本函数做任何修改 */
-	switch (num) {
-		case 0:
-			if (flag_of_zero)	//此标记什么意思请自行思考
-				cout << "零";
+	int w = 0;
+	w = y + y / 4 + c / 4 - 2 * c + (13 * (m + 1) / 5) + d - 1;
+	for (; w < 0 || w>7;)
+	{
+		w = (w + 7) % 7;
+	}
+	return w;
+}
+
+void calendar(int y, int m, int w, int num)
+{
+	if (m > 12)
+	{
+		cout << y+1 << "年" << m-12 << "月\n";
+	}
+	else
+	{
+		cout << y << "年" << m << "月\n";
+	}
+	for (int i = 0; i < 54; i++)
+	{
+		cout << "=";
+	}
+	cout << "\n";
+	cout << "星期日  星期一  星期二  星期三  星期四  星期五  星期六\n";
+	for (int i = 0; i < 54; i++)
+	{
+		cout << "=";
+	}
+	cout << "\n";
+	for (int i = 0; i < w; i++)
+	{
+		//八个空格
+		cout << "        ";
+	}
+	int current = 0;
+	while (true)
+	{
+		for (; w < 7; w++)
+		{
+			current++;
+			//四位宽度输出数字加上四个空格
+			cout << setw(4) << current << "    ";
+			if (current == num)
+				break;
+		}
+		w = 0;
+		if (current == num)
+		{
+			cout << endl;
 			break;
-		case 1:
-			cout << "壹";
-			break;
-		case 2:
-			cout << "贰";
-			break;
-		case 3:
-			cout << "叁";
-			break;
-		case 4:
-			cout << "肆";
-			break;
-		case 5:
-			cout << "伍";
-			break;
-		case 6:
-			cout << "陆";
-			break;
-		case 7:
-			cout << "柒";
-			break;
-		case 8:
-			cout << "捌";
-			break;
-		case 9:
-			cout << "玖";
-			break;
-		default:
-			cout << "error";
-			break;
+		}
+		cout << endl;
 	}
 }
 
-/* 可根据需要自定义其它函数(也可以不定义) */
-
-/***************************************************************************
-  函数名称：
-  功    能：
-  输入参数：
-  返 回 值：
-  说    明：
-***************************************************************************/
+int getMonth(int m, int leap)
+{
+	if (m == 1 || m == 3 || m == 5 || m == 7 || m == 8 || m == 10 || m == 12)
+	{
+		return  31;
+	}
+	else if (m == 2)
+	{
+		return  28 + leap;
+	}
+	else
+	{
+		return 30;
+	}
+}
 int main()
 {
-	/* 按需完成 */
-	double n;
-	int digit = 0;//当前位数字
-	int num;//除数
-	bool highest = true;
-	bool flag_of_zero = false;//是否可以输出零，true则输出0,false则跳过
-	cout << "请输入[0-100亿)之间的数字:" << endl;
-	cin >> n;
-	cout << "大写结果是:" << endl;
-
-	//除数初始化:十亿
-	num = 1000000000;
-
-	//状态转移
-	digit = (int)(n / num);
-	n -= (double)(digit)*num;
-	num /= 10;
-	//位数输出
-	
-	//后缀输出
-	if (digit != 0)
+	int y, m, d = 1;
+	int num, leap;
+	while (1)
 	{
-		if(flag_of_zero==true)
+		cout << "请输入年[1900-2100]、月\n";
+		cin >> y >> m;
+		leap = ((y % 400 == 0 || (y % 4 == 0 && y % 100 != 0)) ? 1 : 0);
+
+		num = getMonth(m, leap);
+		if (cin.good() == 0)
 		{
-			daxie(0, flag_of_zero);
+			cout << "输入错误，请重新输入\n";
+			int temp;
+			cin.clear();
+			while ((temp = getchar()) != '\n')
+			{
+				;
+			}
+			continue;
 		}
-		daxie(digit, flag_of_zero);
-		flag_of_zero = false;
-		highest = false;
-		cout << "拾";
-	}
-	else if (highest == false)
-	{
-		flag_of_zero = false;
-	}
-		
-	//状态转移
-	digit = (int)(n / num);
-	n -= (double)(digit)*num;
-	num /= 10;
-	//位数输出
-	daxie(digit, flag_of_zero);
-	//后缀输出 必定输出亿
-	if (digit != 0)
-	{
-		flag_of_zero = false;
-		highest = false;
-		cout << "亿";
-	}
-	else if (highest == false)
-	{
-		flag_of_zero = false;	
-		cout << "亿";
-	}
-
-
-	//----------------------------------亿位到此结束-------------------------------------------
-
-	//状态转移
-	digit = (int)(n / num);
-	n -= (double)(digit)*num;
-	num /= 10;
-	//位数输出
-
-	//后缀输出
-	if (digit != 0)
-	{
-		if (flag_of_zero == true)
+		else if (y < 1900 || y>2100)
 		{
-			daxie(0, flag_of_zero);
+			cout << "年份不正确，请重新输入\n";
 		}
-		daxie(digit, flag_of_zero);
-		flag_of_zero = true;
-		highest = false;
-			cout << "仟";
-	}
-	else if (highest == false)
-	{
-		flag_of_zero = true;
-	}
-
-	//状态转移
-	digit = (int)(n / num);
-	n -= (double)(digit)*num;
-	num /= 10;
-	//位数输出
-
-	//后缀输出
-	if (digit != 0)
-	{
-		if (flag_of_zero == true)
+		else if (m < 1 || m>12)
 		{
-			daxie(0, flag_of_zero);
+			cout << "月份不正确，请重新输入\n";
 		}
-		daxie(digit, flag_of_zero);
-		flag_of_zero = true;
-		highest = false;
-		cout << "佰";
-	}
-	else if (highest == false)
-	{
-		flag_of_zero = true;
-	}
-
-	//状态转移
-	digit = (int)(n / num);
-	n -= (double)(digit)*num;
-	num /= 10;
-	//位数输出
-
-	//后缀输出
-	if (digit != 0)
-	{
-		if (flag_of_zero == true)
-		{
-			daxie(0, flag_of_zero);
+		else {
+			break;
 		}
-		daxie(digit, flag_of_zero);
-		flag_of_zero = false;
-		highest = false;
-		cout << "拾";
 	}
-	else if (highest != false)
+	//输入正确，开始打印
+	cout << endl;
+	if (m < 3)
 	{
-		flag_of_zero = true;
+		m += 12;
+		y -= 1;
 	}
-		
-
-	//状态转移
-	digit = (int)(n / num);
-	n -= (double)(digit)*num;
-	num /= 10;
-	//位数输出
-
-	//后缀输出 必定输出万
-	if (digit != 0)
-	{
-		if (flag_of_zero == true)
-		{
-			daxie(0, flag_of_zero);
-		}
-		daxie(digit, flag_of_zero);
-		flag_of_zero = false;
-		highest = false;
-		cout << "万";
-	}
-	else if (highest == false)
-	{
-		flag_of_zero = false;
-		cout << "万";
-	}
-
-
-	//---------------------------------万位到此结束-------------------------------------
-
-	//状态转移
-	digit = (int)(n / num);
-	n -= (double)(digit)*num;
-	num /= 10;
-	//位数输出
-
-	//后缀输出
-	if (digit != 0)
-	{
-		if (flag_of_zero == true)
-		{
-			daxie(0, flag_of_zero);
-		}
-		daxie(digit, flag_of_zero);
-		flag_of_zero = true;
-		highest = false;
-		cout << "仟";
-	}
-	else if (highest == false)
-	{
-		flag_of_zero = true;
-	}
-
-	//状态转移
-	digit = (int)(n / num);
-	n -= (double)(digit)*num;
-	num /= 10;
-	//位数输出
-
-	//后缀输出
-	if (digit != 0)
-	{
-		if (flag_of_zero == true)
-		{
-			daxie(0, flag_of_zero);
-		}
-		daxie(digit, flag_of_zero);
-		flag_of_zero = true;
-		highest = false;
-		cout << "佰";
-	}
-	else if (highest == false)
-	{
-		flag_of_zero = true;
-	}
-
-
-	//状态转移
-	digit = (int)(n / num);
-	n -= (double)(digit)*num;
-	num /= 10;
-	//位数输出
-
-	//后缀输出
-	if (digit != 0)
-	{
-		if (flag_of_zero == true)
-		{
-			daxie(0, flag_of_zero);
-		}
-		daxie(digit, flag_of_zero);
-		flag_of_zero = false;
-		highest = false;
-		cout << "拾";
-	}
-	else if (highest == false)
-	{
-		flag_of_zero = true;
-	}
-		
-
-	//状态转移
-	digit = (int)(n / num);
-	n -= (double)(digit)*num;
-	num /= 10;
-	//位数输出
-	
-	//后缀输出 必定输出圆
-	if (digit != 0)
-	{
-		if (flag_of_zero == true)
-		{
-			daxie(0, flag_of_zero);
-		}
-		daxie(digit, flag_of_zero);
-		highest = false;
-		cout << "圆";
-	}
-	else if (highest == false)
-	{
-		cout << "圆";
-	}
-	
-	n += 0.0001;//处理误差
-
-	//若后续无小数，判断情况
-	if (floor(100 * n) == 0)
-	{
-		if (highest == true)
-		{
-			daxie(0, true);//输出零
-			cout << "圆";
-		}
-		highest = true;
-		cout << "整";
-	}
-
-	flag_of_zero = false;
-
-	//--------------------------------整数部分到此结束-----------------------------------------------
-	//除数转乘数
-	num = 10;
-
-	//状态转移
-	digit = (int)(n * num);
-	n -= (double)(digit) / num;
-	num *= 10;
-	//位数输出
-	daxie(digit, flag_of_zero);
-	//后缀输出
-	if (digit != 0)
-	{
-		flag_of_zero = false;
-		highest = false;
-		cout << "角";
-	}
-	else if (highest == false)
-	{
-		highest = true;
-		cout << "零";
-	}
-		
-
-	//状态转移
-	digit = (int)round(100 * n);
-	n -= (double)(digit) / num;
-	num *= 10;
-	//位数输出
-	daxie(digit, flag_of_zero);
-	//后缀输出
-	if (digit != 0)
-	{
-		flag_of_zero = true;
-		highest = false;
-		cout << "分";
-	}
-	else if (highest == false)
-	{
-		cout << "整";
-	}
-
-
-	//结尾
+	calendar(y, m, zeller(y / 100, y - y / 100 * 100, m, d), num);
 	cout << endl;
 	return 0;
 }

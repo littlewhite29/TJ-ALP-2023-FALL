@@ -144,6 +144,9 @@
     <ClCompile Include="3-b7-2.cpp" />
     <ClCompile Include="3-b8.cpp" />
     <ClCompile Include="4-b1.cpp" />
+    <ClCompile Include="4-b2-2.cpp" />
+    <ClCompile Include="4-b3.cpp" />
+    <ClCompile Include="4-b4-2.cpp" />
     <ClCompile Include="helloworld.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

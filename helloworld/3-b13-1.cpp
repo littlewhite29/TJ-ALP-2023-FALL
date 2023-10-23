@@ -28,6 +28,7 @@
 //		{
 //			cout << "输入非法，请重新输入\n";
 //			int temp;
+//			cin.clear();
 //			while ((temp = getchar()) != '\n')
 //			{
 //				;//空语句
@@ -53,6 +54,7 @@
 //			//printf("%d,%d\n",status, ret);
 //			cout << "输入非法，请重新输入\n";
 //			int temp;
+//			cin.clear();
 //			while ((temp = getchar()) != '\n')
 //			{
 //				;//空语句
@@ -81,7 +83,7 @@
 //	for (int i = 0; i < d; i++)
 //	{
 //		//八个空格
-//		printf("        ");
+//		cout << "        ";
 //	}
 //	int current = 0;
 //	while (true)

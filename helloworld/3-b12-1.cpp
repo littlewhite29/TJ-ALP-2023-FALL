@@ -13,6 +13,7 @@
 //		{
 //			int temp;
 //			//cin.ignore(std::numeric_limits< streamsize >::max(), '\n');
+//			cin.clear();
 //			while ((temp = getchar()) != '\n')
 //			{
 //				;//ø’”Ôæ‰

@@ -69,5 +69,14 @@
     <ClCompile Include="4-b1.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="4-b2-2.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="4-b3.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="4-b4-2.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
