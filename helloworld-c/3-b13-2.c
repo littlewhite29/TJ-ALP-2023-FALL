@@ -50,7 +50,8 @@
 //		{
 //			//printf("%d,%d\n",status, ret);
 //			printf("输入非法，请重新输入\n");
-//			rewind(stdin);
+//			//rewind(stdin);
+//			scanf("%*[^\n]");
 //		}
 //		else
 //		{

@@ -1,5 +1,6 @@
 ///* 2051891 黄治东 信管 */
 //#include <iostream>
+//#include <cmath>
 //using namespace std;
 //
 ///* 可根据需要添加相应的内容 */
@@ -85,7 +86,7 @@
 //	//后缀输出
 //	if (digit != 0)
 //	{
-//		if (flag_of_zero == true)
+//		if (flag_of_zero == true&&highest==false)
 //		{
 //			daxie(0, flag_of_zero);
 //		}
@@ -130,12 +131,12 @@
 //	//后缀输出
 //	if (digit != 0)
 //	{
-//		if (flag_of_zero == true)
+//		if (flag_of_zero == true&&highest==false)
 //		{
 //			daxie(0, flag_of_zero);
 //		}
 //		daxie(digit, flag_of_zero);
-//		flag_of_zero = true;
+//		flag_of_zero = false;
 //		highest = false;
 //		cout << "仟";
 //	}
@@ -153,12 +154,12 @@
 //	//后缀输出
 //	if (digit != 0)
 //	{
-//		if (flag_of_zero == true)
+//		if (flag_of_zero == true&&highest==false)
 //		{
 //			daxie(0, flag_of_zero);
 //		}
 //		daxie(digit, flag_of_zero);
-//		flag_of_zero = true;
+//		flag_of_zero = false;
 //		highest = false;
 //		cout << "佰";
 //	}
@@ -200,7 +201,7 @@
 //	//后缀输出 必定输出万
 //	if (digit != 0)
 //	{
-//		if (flag_of_zero == true)
+//		if (flag_of_zero == true&&highest==false)
 //		{
 //			daxie(0, flag_of_zero);
 //		}
@@ -227,12 +228,12 @@
 //	//后缀输出
 //	if (digit != 0)
 //	{
-//		if (flag_of_zero == true)
+//		if (flag_of_zero == true&&highest==false)
 //		{
 //			daxie(0, flag_of_zero);
 //		}
 //		daxie(digit, flag_of_zero);
-//		flag_of_zero = true;
+//		flag_of_zero = false;
 //		highest = false;
 //		cout << "仟";
 //	}
@@ -250,12 +251,12 @@
 //	//后缀输出
 //	if (digit != 0)
 //	{
-//		if (flag_of_zero == true)
+//		if (flag_of_zero == true&&highest==false)
 //		{
 //			daxie(0, flag_of_zero);
 //		}
 //		daxie(digit, flag_of_zero);
-//		flag_of_zero = true;
+//		flag_of_zero = false;
 //		highest = false;
 //		cout << "佰";
 //	}
@@ -274,7 +275,7 @@
 //	//后缀输出
 //	if (digit != 0)
 //	{
-//		if (flag_of_zero == true)
+//		if (flag_of_zero == true&&highest==false)
 //		{
 //			daxie(0, flag_of_zero);
 //		}
@@ -298,7 +299,7 @@
 //	//后缀输出 必定输出圆
 //	if (digit != 0)
 //	{
-//		if (flag_of_zero == true)
+//		if (flag_of_zero == true&&highest==false)
 //		{
 //			daxie(0, flag_of_zero);
 //		}
@@ -347,7 +348,7 @@
 //	else if (highest == false)
 //	{
 //		highest = true;
-//		cout << "零";
+//		daxie(0,true);
 //	}
 //
 //
