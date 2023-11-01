@@ -1,122 +1,131 @@
-/* 2051891 信管 黄治东 */
+/* 2051891 黄治东 信管 */
 #include <iostream>
 #include <iomanip>
-#include <cstdio>
 using namespace std;
 
-/* -----------------------------------------------------------------------------------
-		允许   ：1、按需增加一个或多个函数（包括递归函数），但是所有增加的函数中不允许任何形式的循环
-				 2、定义符号常量
-				 3、定义const型变量
-
-		不允许 ：1、定义全局变量
-				 2、除print_tower之外的其他函数中不允许定义静态局部变量
-   ----------------------------------------------------------------------------------- */
+/* ----具体要求----
+   1、不允许添加其它头文件
+   2、不允许定义全局变量、静态局部变量
+   3、不允许添加其它函数
+   4、main函数处理输入，允许循环
+   --------------------------------------------------------------------- */
 
    /***************************************************************************
 	 函数名称：
-	 功    能：打印字母塔
-	 输入参数：
+	 功    能：打印n层汉诺塔的移动顺序
+	 输入参数：int n：层数
+			   char src：起始柱
+			   char tmp：中间柱
+			   char dst：目标柱
 	 返 回 值：
-	 说    明：形参按需设置
-			   提示：有一个参数order，指定正序/倒序
+	 说    明：1、函数名、形参、返回类型均不准动
+			   2、本函数不允许出现任何形式的循环
    ***************************************************************************/
-void print_tower(char end_ch, char current_ch, bool order)//order取1为降序
+void hanoi(int n, char src, char tmp, char dst)
 {
-	cout << setfill(' ');
-	if(end_ch!='A'-1)
+	//首先判断是否为1
+	if (n == 1)
 	{
-		/* 允许按需定义最多一个静态局部变量（也可以不定义） */
-		if (end_ch >= 'a' && end_ch <= 'z')
-		{
-			cout << current_ch;
-			if (end_ch - 32 != current_ch)//递归打印每行
-			{
-				print_tower(end_ch, current_ch + 1, order);
-				cout << current_ch;
-			}
-		}
-		else if (order)//以下控制换行及每行的首尾字符
-		{
-			cout << setw((int)('Z' - end_ch)+1) << current_ch;
-			if (end_ch != current_ch)
-			{
-				print_tower(end_ch + 32, current_ch + 1, order);
-				cout << current_ch;
-				cout << endl;
-				print_tower(end_ch - 1, current_ch, order);
-			}
-			else
-			{
-				cout << endl;
-			}
-		}
-		else
-		{
-			if (end_ch != current_ch)
-			{
-				print_tower(end_ch - 1, current_ch, order);
-			}
-			cout << setw((int)('Z' - end_ch)+1) << current_ch;
-			if (end_ch != current_ch)
-			{
-				print_tower(end_ch + 32, current_ch + 1, order);
-				cout << current_ch;
-				cout << endl;
-			}
-			else
-			{
-				cout << endl;
-			}
-		}
+		cout << setw(2) << n << "# " << src << "-->" << dst << endl;
 	}
-	/* 按需实现，函数中不允许任何形式的循环，函数允许调用其它函数 */
-	
-
+	else
+	{
+		//若不为1将问题分治为n-1个盘从当前柱移动到中间柱
+		hanoi(n - 1, src, dst, tmp);
+		//然后将剩余一个盘移动到结束柱
+		cout << setw(2) << n << "# " << src << "-->" << dst << endl;
+		//最后再将n-1个盘从中间柱移动到结束柱
+		hanoi(n - 1, tmp, src, dst);
+	}
 }
-
-
 
 /***************************************************************************
   函数名称：
   功    能：
   输入参数：
   返 回 值：
-  说    明：main函数中的...允许修改，其余位置不准修改
+  说    明：1、完成输入、调用递归函数
+			2、处理输入错误时，允许使用循环
+			3、为了统一检查，不再允许添加其它函数（输入起始/目标柱的代码不要求统一函数处理，均直接放在main中）
 ***************************************************************************/
 int main()
 {
-	char end_ch;
+	int n;//层数
+	char src;//起始柱
+	char dst;//目标柱
+	char tmp;//中间柱
+	int temp;//清除缓冲区的工具变量
+	while (true)
+	{
+		cout << "请输入汉诺塔的层数(1-16)\n";
+		cin >> n;
+		if (n >= 1 && n <= 16)
+		{
+			break;
+		}
+		//无论输入是否正确都清空缓冲区
+		cin.clear();
+		while ((temp = getchar()) != '\n')
+		{
+			;
+		}
 
-	/* 键盘输入结束字符(仅大写有效，为避免循环出现，不处理输入错误) */
-	cout << "请输入结束字符(A~Z)" << endl;
-	end_ch = getchar();			//读缓冲区第一个字符
-	if (end_ch < 'A' || end_ch > 'Z') {
-		cout << "结束字符不是大写字母" << endl;
-		return -1;
 	}
+	//无论输入是否正确都清空缓冲区
+	while ((temp = getchar()) != '\n')
+	{
+		;
+	}
+	while (true)
+	{
+		cout << "请输入起始柱(A-C)\n";
+		if ((src = getchar()) >= 'A' && src <= 'C')
+		{
+			break;
+		}
+		else if (src >= 'a' && src <= 'c')
+		{
+			src -= 32;
+			break;
+		}
 
-	/* 正三角字母塔(两边为A) */
-	cout << setw(2 * (int)(end_ch - 'A') + 1) << setfill('=')<<"" << endl; /* 按字母塔最大宽度输出=(不允许用循环) */
-	cout << "正三角字母塔(A->" << end_ch << ")" << endl;
-	cout << setw(2 * (int)(end_ch - 'A') + 1) << setfill('=')<<"" << endl; /* 按字母塔最大宽度输出=(不允许用循环) */
-	print_tower(end_ch,'A',0); //正序打印 A~结束字符 
-	cout << endl;
+		//无论输入是否正确都清空缓冲区
+		while ((temp = getchar()) != '\n')
+		{
+			;
+		}
+	}
+	//无论输入是否正确都清空缓冲区
+	while ((temp = getchar()) != '\n')
+	{
+		;
+	}
+	while (true)
+	{
+		cout << "请输入目标柱(A-C)\n";
+		if ((dst = getchar()) == src || (dst == src + 32 && (dst -= 32)))
+		{
+			cout << "目标柱(" << dst << ")不能与起始柱(" << src << ")相同\n";
+		}
+		else if (dst >= 'A' && dst <= 'C')
+		{
+			tmp = 'A' + 'B' + 'C' - dst - src;
+			break;
+		}
+		else if ((dst = dst - 32) >= 'A' && dst <= 'C')
+		{
+			tmp = 'A' + 'B' + 'C' - dst - src;
+			break;
+		}
 
-	/* 倒三角字母塔(两边为A) */
-	cout << setw(2 * (int)(end_ch - 'A') + 1) << setfill('=')<<"" << endl; /* 按字母塔最大宽度输出=(不允许用循环) */
-	cout << "倒三角字母塔(A->" << end_ch << ")" << endl;
-	cout << setw(2 * (int)(end_ch - 'A') + 1) << setfill('=')<<"" << endl; /* 按字母塔最大宽度输出=(不允许用循环) */
-	print_tower(end_ch,'A',1); //逆序打印 A~结束字符 
-	cout << endl;
+		//无论输入是否正确都清空缓冲区
+		while ((temp = getchar()) != '\n')
+		{
+			;
+		}
 
-	/* 合起来就是漂亮的菱形（外侧为A） */
-	cout << setw(2 * (int)(end_ch - 'A') + 1) << setfill('=')<<"" << endl;/* 按字母塔最大宽度输出= */
-	cout << "菱形(A->" << end_ch << ")" << endl;
-	cout << setw(2 * (int)(end_ch - 'A') + 1) << setfill('=')<<"" << endl;/* 按字母塔最大宽度输出= */
-	print_tower(end_ch,'A',0);   //打印 A~结束字符的正三角 
-	print_tower(end_ch-1,'A',1);   //打印 A~结束字符-1的倒三角 
-	cout << endl;
+	}
+	cout << "移动步骤为:\n";
+	hanoi(n, src, tmp, dst);
 
-	return 0;
 }

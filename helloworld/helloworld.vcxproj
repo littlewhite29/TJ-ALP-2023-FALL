@@ -146,6 +146,7 @@
     <ClCompile Include="4-b1.cpp" />
     <ClCompile Include="4-b10.cpp" />
     <ClCompile Include="4-b11.cpp" />
+    <ClCompile Include="4-b12.cpp" />
     <ClCompile Include="4-b2-2.cpp" />
     <ClCompile Include="4-b3.cpp" />
     <ClCompile Include="4-b4-2.cpp" />

@@ -50,4 +50,4 @@
 //		printf("legendre[%d](%lf)=%lf\n", n, x, legendre(x, n));
 //	}
 //}
-//
+
