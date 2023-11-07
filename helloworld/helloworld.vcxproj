@@ -154,6 +154,8 @@
     <ClCompile Include="4-b8.cpp" />
     <ClCompile Include="4-b9.cpp" />
     <ClCompile Include="helloworld.cpp" />
+    <ClCompile Include="w08-s1.cpp" />
+    <ClCompile Include="w08-s3.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

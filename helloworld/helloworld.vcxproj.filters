@@ -96,5 +96,11 @@
     <ClCompile Include="4-b12.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="w08-s1.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="w08-s3.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
