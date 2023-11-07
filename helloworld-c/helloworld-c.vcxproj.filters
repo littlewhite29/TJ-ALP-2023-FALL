@@ -69,5 +69,8 @@
     <ClCompile Include="w08-s2.c">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="4-b13-2.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
