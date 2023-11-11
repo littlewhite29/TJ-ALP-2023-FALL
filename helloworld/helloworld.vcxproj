@@ -154,6 +154,10 @@
     <ClCompile Include="4-b5.cpp" />
     <ClCompile Include="4-b8.cpp" />
     <ClCompile Include="4-b9.cpp" />
+    <ClCompile Include="5-b1.cpp" />
+    <ClCompile Include="5-b2.cpp" />
+    <ClCompile Include="5-b5.cpp" />
+    <ClCompile Include="5-b6-2.cpp" />
     <ClCompile Include="helloworld.cpp" />
     <ClCompile Include="w08-s1.cpp" />
     <ClCompile Include="w08-s3.cpp" />
