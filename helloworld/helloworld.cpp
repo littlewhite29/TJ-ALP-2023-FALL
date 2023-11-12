@@ -1,52 +1,94 @@
-/*2051891 信管 黄治东*/
+/* 2051891 黄治东 信管 */
 #include <iostream>
 #include <iomanip>
 using namespace std;
 
+int min(int a, int b, int c = -1, int d = -1)
+{
+	int min = a < b ? a : b;
+	int min2 = c < d ? c : d;
+	if (c == -1)
+	{
+		return min;
+	}
+	else if (d == -1)
+	{
+		return min < c ? min : c;
+	}
+	else
+	{
+		return min < min2 ? min : min2;
+	}
+}
+
 int main()
 {
-	int score[101], size = 0, input[1000], rank = 1;
-	for (int i = 0; i < 101; i++)
+	int num;
+	int a, b, c, d, result;
+	int temp;
+	while (true)
 	{
-		score[i] = 0;
-	}
-	//处理输入
-	cout << "请输入成绩（最多1000个），负数结束输入\n";
-	for (int i = 0; i < 1000; i++)
-	{
-		cin >> input[i];
-		if (input[i] < 0)
+		cout << "请输入个数num及num个正整数：\n";
+		cin >> num;
+		if (cin.good() == 0)
 		{
-			break;
-		}
-		else
-		{
-			score[input[i]] += 1;
-			size++;
-		}
-	}
-	//打印结果
-	cout << "输入的数组为:";
-	for (int i = 0; i < size; i++)
-	{
-		if (i % 10 == 0)
-		{
-			cout << "\n";
-		}
-		cout << input[i] << " ";
-	}
-	cout << endl;
-
-	cout << "分数与名次的对应关系为:\n";
-	for (int i = 100; i >= 0; i--)
-	{
-		if (score[i] > 0)
-		{
-			for (int j = 0; j < score[i]; j++)
+			cin.clear();
+			while ((temp = getchar()) != '\n')
 			{
-				cout << i << " " << rank << endl;
+				;
 			}
-			rank += score[i];
+			continue;
 		}
+		switch (num)
+		{
+			case 2:
+				cin >> a >> b;
+				break;
+			case 3:
+				cin >> a >> b >> c;
+				break;
+			case 4:
+				cin >> a >> b >> c >> d;
+				break;
+			default:
+				break;
+		}
+		if (cin.good() == 0)
+		{
+			cin.clear();
+			while ((temp = getchar()) != '\n')
+			{
+				;
+			}
+			continue;
+		}
+		else break;
 	}
+
+	switch (num)
+	{
+		case 2:
+			result = min(a, b);
+			break;
+		case 3:
+			result = min(a, b, c);
+			break;
+		case 4:
+			result = min(a, b, c, d);
+			break;
+		default:
+			result = -1;
+			break;
+	}
+
+	if (result > 0)
+	{
+		cout << "min=" << result << endl;
+	}
+	else
+	{
+		cout << "个数输入错误\n";
+	}
+
+	return 0;
 }

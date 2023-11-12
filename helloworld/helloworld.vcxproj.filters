@@ -117,5 +117,11 @@
     <ClCompile Include="5-b6-2.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="4-b18.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="4-b19.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
