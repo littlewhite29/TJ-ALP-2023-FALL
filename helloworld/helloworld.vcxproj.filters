@@ -123,5 +123,14 @@
     <ClCompile Include="4-b19.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="w10-s1.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="w10-s2.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="w10-s3.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

@@ -163,6 +163,9 @@
     <ClCompile Include="helloworld.cpp" />
     <ClCompile Include="w08-s1.cpp" />
     <ClCompile Include="w08-s3.cpp" />
+    <ClCompile Include="w10-s1.cpp" />
+    <ClCompile Include="w10-s2.cpp" />
+    <ClCompile Include="w10-s3.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -3,92 +3,56 @@
 #include <iomanip>
 using namespace std;
 
-int min(int a, int b, int c = -1, int d = -1)
+void print_triangle(int line)
 {
-	int min = a < b ? a : b;
-	int min2 = c < d ? c : d;
-	if (c == -1)
+	int num[13][13];
+	num[0][0] = 1;
+	for (int i = 0; i < line; i++)
 	{
-		return min;
+		num[i][0] = 1;
+		for (int j = 1; j < i; j++)\
+		{
+			num[i][j] = num[i - 1][j-1] + num[i-1][j];
+		}
+		num[i][i] = 1;
 	}
-	else if (d == -1)
+
+	for (int i = 0; i < line; i++)
 	{
-		return min < c ? min : c;
-	}
-	else
-	{
-		return min < min2 ? min : min2;
+		for (int j = 0;j<=i;j++)
+		{
+			cout << setw(6) << num[i][j];
+		}
+		cout << endl;
 	}
 }
 
+/***************************************************************************
+  函数名称：
+  功    能：
+  输入参数：
+  返 回 值：
+  说    明：只给出了上下标尺，其它均需要自己补充
+***************************************************************************/
 int main()
 {
-	int num;
-	int a, b, c, d, result;
-	int temp;
-	while (true)
-	{
-		cout << "请输入个数num及num个正整数：\n";
-		cin >> num;
-		if (cin.good() == 0)
-		{
-			cin.clear();
-			while ((temp = getchar()) != '\n')
-			{
-				;
-			}
-			continue;
-		}
-		switch (num)
-		{
-			case 2:
-				cin >> a >> b;
-				break;
-			case 3:
-				cin >> a >> b >> c;
-				break;
-			case 4:
-				cin >> a >> b >> c >> d;
-				break;
-			default:
-				break;
-		}
-		if (cin.good() == 0)
-		{
-			cin.clear();
-			while ((temp = getchar()) != '\n')
-			{
-				;
-			}
-			continue;
-		}
-		else break;
-	}
+	int line;
+	cout << "请输入要打印的行数[3..13]\n";
+	cin >> line;
 
-	switch (num)
-	{
-		case 2:
-			result = min(a, b);
-			break;
-		case 3:
-			result = min(a, b, c);
-			break;
-		case 4:
-			result = min(a, b, c, d);
-			break;
-		default:
-			result = -1;
-			break;
-	}
+	/* 上标尺 */
+	cout << "--------------------------------------------------------------------------------" << endl;
+	cout << "0         1         2         3         4         5         6         7         " << endl;
+	cout << "01234567890123456789012345678901234567890123456789012345678901234567890123456789" << endl;
+	cout << "--------------------------------------------------------------------------------" << endl;
 
-	if (result > 0)
-	{
-		cout << "min=" << result << endl;
-	}
-	else
-	{
-		cout << "个数输入错误\n";
-	}
+	print_triangle(line);
+	/* 下标尺 */
+	cout << "--------------------------------------------------------------------------------" << endl;
+	cout << "01234567890123456789012345678901234567890123456789012345678901234567890123456789" << endl;
+	cout << "0         1         2         3         4         5         6         7         " << endl;
+	cout << "--------------------------------------------------------------------------------" << endl;
+	cout << endl;
 
 	return 0;
 }
