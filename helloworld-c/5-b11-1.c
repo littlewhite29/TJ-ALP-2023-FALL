@@ -1,33 +1,34 @@
 ///* 信管 2051891 黄治东 */
-//#include <iostream>
-//#include <string>
+//#define _CRT_SECURE_NO_WARNINGS
+//#include <stdio.h>
+//#include <stdbool.h>
+//#include <math.h>
 ////可按需增加需要的头文件
-//using namespace std;
 //
 //const char chnstr[] = "零壹贰叁肆伍陆柒捌玖"; /* 所有输出大写 "零" ~ "玖" 的地方，只允许从这个数组中取值 */
-//string result;  /* 除result外，不再允许定义任何形式的全局变量 */
+//char result[256];  /* 除result外，不再允许定义任何形式的全局变量 */
 //
 ///* --允许添加需要的函数 --*/
-//void daxie(int num, int flag_of_zero)
+//void daxie(int num, int flag_of_zero,int length)
 //{
 //	if (num == 0)
 //	{
 //		if (flag_of_zero)
 //		{
-//			char str[] = { chnstr[0],chnstr[1],'\0' };
-//			result = result + str;
+//			result[length] = chnstr[0];
+//			result[length+1] = chnstr[1];
 //		}
 //	}
 //	else
 //	{
-//		char str[] = { chnstr[2 * num],chnstr[2 * num + 1],'\0' };
-//		result = result + str;
+//		result[length] = chnstr[2*num];
+//		result[length + 1] = chnstr[2*num+1];
 //	}
 //}
 //
 //void put_number(double n)
 //{
-//	double num=n;
+//	double num = n;
 //	int digit = 0;//当前位数字
 //	int div = 1000000000;//除数初始化:十亿
 //	bool highest = true;
@@ -38,8 +39,9 @@
 //	//计数器初始化
 //	int mid_count = 2;
 //	int end_count = 0;
+//	int length=0;
 //
-//	while (div!=0)
+//	while (div != 0)
 //	{
 //		//状态转移
 //		digit = (int)(num / div);
@@ -52,29 +54,33 @@
 //		{
 //			if (flag_of_zero == true && highest == false)
 //			{
-//				daxie(0, flag_of_zero);
+//				daxie(0, flag_of_zero,length);
+//				length += 2;
 //			}
-//			daxie(digit, flag_of_zero);
+//			daxie(digit, flag_of_zero,length);
+//			length += 2;
 //			flag_of_zero = false;
 //			highest = false;
-//			if(mid_count!=3)
+//			if (mid_count != 3)
 //			{
-//				char str[] = { mid_str[2 * mid_count],mid_str[2 * mid_count+1],'\0' };
-//				result = result + str;
+//				result[length] = mid_str[2 * mid_count];
+//				result[length + 1] = mid_str[2 * mid_count + 1];
 //			}
 //			else
 //			{
-//				char str[] = { end_str[2 * end_count],end_str[2 * end_count + 1],'\0' };
-//				result = result + str;
+//				result[length] = end_str[2 * end_count];
+//				result[length + 1] = end_str[2 * end_count + 1];
 //			}
+//			length += 2;
 //		}
 //		else if (highest == false)
 //		{
 //			flag_of_zero = true;
 //			if (mid_count == 3)
 //			{
-//				char str[] = { end_str[2 * end_count],end_str[2 * end_count + 1],'\0' };
-//				result = result + str;
+//				result[length] = end_str[2 * end_count];
+//				result[length + 1] = end_str[2 * end_count + 1];
+//				length += 2;
 //			}
 //		}
 //
@@ -93,12 +99,17 @@
 //	{
 //		if (highest == true)
 //		{
-//			daxie(0, true);//输出零
-//			char str[] = { end_str[4],end_str[5],'\0' };
-//			result = result + str;
+//			daxie(0, true, length);//输出零
+//			length += 2;
+//			result[length] = end_str[4];
+//			result[length + 1] = end_str[5];
+//			length += 2;
 //		}
 //		highest = true;
-//		result += "整";
+//		char temp[] = "整";
+//		result[length] = temp[0];
+//		result[length + 1] = temp[1];
+//		length += 2;
 //	}
 //
 //	flag_of_zero = false;
@@ -112,40 +123,48 @@
 //	num -= (double)(digit) / div;
 //	div *= 10;
 //	//位数输出
-//	daxie(digit, flag_of_zero);
+//	daxie(digit, flag_of_zero, length);
+//	length += 2;
 //	//后缀输出
 //	if (digit != 0)
 //	{
 //		flag_of_zero = false;
 //		highest = false;
-//		char str[] = { mid_str[2 * mid_count],mid_str[2 * mid_count + 1],'\0' };
-//		result = result + str;
+//		result[length] = mid_str[2 * mid_count];
+//		result[length + 1] = mid_str[2 * mid_count + 1];
+//		length += 2;
 //	}
 //	else if (highest == false)
 //	{
 //		highest = true;
-//		daxie(0, true);
+//		daxie(0, true, length);
+//		length += 2;
 //	}
 //
-//	
+//
 //	//状态转移
 //	mid_count++;
 //	digit = (int)round(100 * num);
 //	num -= (double)(digit) / div;
 //	div *= 10;
 //	//位数输出
-//	daxie(digit, flag_of_zero);
+//	daxie(digit, flag_of_zero, length);
+//	length += 2;
 //	//后缀输出
 //	if (digit != 0)
 //	{
 //		flag_of_zero = true;
 //		highest = false;
-//		char str[] = { mid_str[2 * mid_count],mid_str[2 * mid_count + 1],'\0' };
-//		result = result + str;
+//		result[length] = mid_str[2 * mid_count];
+//		result[length + 1] = mid_str[2 * mid_count + 1];
+//		length += 2;
 //	}
 //	else if (highest == false)
 //	{
-//		result += "整";
+//		char temp[] = "整";
+//		result[length] = temp[0];
+//		result[length + 1] = temp[1];
+//		length += 2;
 //	}
 //}
 //
@@ -158,13 +177,13 @@
 //***************************************************************************/
 //int main()
 //{
-//	/* --允许添加需要的内容 --*/
+//    /* --允许添加需要的内容 --*/
 //	double n;
-//	cout << "请输入[0-100亿)之间的数字:" << endl;
-//	cin >> n;
-//	cout << "大写结果是:" << endl;
-//
+//	printf("请输入[0-100亿)之间的数字:\n");
+//	scanf("%lf", &n);
+//	printf("大写结果是:\n");
 //	put_number(n);
-//	cout << result << endl;  /* 转换得到的大写结果，只允许用本语句输出，其它地方不允许以任何形式对大写结果进行全部/部分输出 */
-//	return 0;
+//
+//    printf("%s\n", result);  /* 转换得到的大写结果，只允许用本语句输出，其它地方不允许以任何形式对大写结果进行全部/部分输出 */
+//    return 0;
 //}

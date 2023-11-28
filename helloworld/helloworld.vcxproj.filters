@@ -132,5 +132,49 @@
     <ClCompile Include="w10-s3.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="5-b7-cct.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="5-b7-main.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="5-b8.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="5-b9.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="5-b10.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="w11-s1.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="w11-s2.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="w11-s3.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="5-b11-2.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="5-b12-main.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="5-b12-sub.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="5-b13.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="5-b7.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="5-b12.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -27,7 +27,7 @@
 //
 //void put_number(double n)
 //{
-//	double num=n;
+//	double num = n;
 //	int digit = 0;//当前位数字
 //	int div = 1000000000;//除数初始化:十亿
 //	bool highest = true;
@@ -39,7 +39,7 @@
 //	int mid_count = 2;
 //	int end_count = 0;
 //
-//	while (div!=0)
+//	while (div != 0)
 //	{
 //		//状态转移
 //		digit = (int)(num / div);
@@ -57,9 +57,9 @@
 //			daxie(digit, flag_of_zero);
 //			flag_of_zero = false;
 //			highest = false;
-//			if(mid_count!=3)
+//			if (mid_count != 3)
 //			{
-//				char str[] = { mid_str[2 * mid_count],mid_str[2 * mid_count+1],'\0' };
+//				char str[] = { mid_str[2 * mid_count],mid_str[2 * mid_count + 1],'\0' };
 //				result = result + str;
 //			}
 //			else
@@ -127,7 +127,7 @@
 //		daxie(0, true);
 //	}
 //
-//	
+//
 //	//状态转移
 //	mid_count++;
 //	digit = (int)round(100 * num);

@@ -81,5 +81,11 @@
     <ClCompile Include="5-b6-1.c">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="5-b11-1.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="5-b14.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
