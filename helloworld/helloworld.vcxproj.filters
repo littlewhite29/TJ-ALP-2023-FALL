@@ -168,12 +168,51 @@
     <ClCompile Include="5-b13.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="5-b15.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="5-b16-2.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="5-b16-3.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="5-b17.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="5-b18.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="w13-s1.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="w13-s2-1.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="6-b1.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="6-b2.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="6-b3.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="6-b4-sub.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="6-b4-main.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="5-b7.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="5-b12.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="6-b4.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

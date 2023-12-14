@@ -162,6 +162,11 @@
     <ClCompile Include="5-b12-main.cpp" />
     <ClCompile Include="5-b12-sub.cpp" />
     <ClCompile Include="5-b13.cpp" />
+    <ClCompile Include="5-b15.cpp" />
+    <ClCompile Include="5-b16-2.cpp" />
+    <ClCompile Include="5-b16-3.cpp" />
+    <ClCompile Include="5-b17.cpp" />
+    <ClCompile Include="5-b18.cpp" />
     <ClCompile Include="5-b2.cpp" />
     <ClCompile Include="5-b5.cpp" />
     <ClCompile Include="5-b6-2.cpp" />
@@ -169,6 +174,11 @@
     <ClCompile Include="5-b7-main.cpp" />
     <ClCompile Include="5-b8.cpp" />
     <ClCompile Include="5-b9.cpp" />
+    <ClCompile Include="6-b1.cpp" />
+    <ClCompile Include="6-b2.cpp" />
+    <ClCompile Include="6-b3.cpp" />
+    <ClCompile Include="6-b4-main.cpp" />
+    <ClCompile Include="6-b4-sub.cpp" />
     <ClCompile Include="helloworld.cpp" />
     <ClCompile Include="w08-s1.cpp" />
     <ClCompile Include="w08-s3.cpp" />
@@ -178,10 +188,13 @@
     <ClCompile Include="w11-s1.cpp" />
     <ClCompile Include="w11-s2.cpp" />
     <ClCompile Include="w11-s3.cpp" />
+    <ClCompile Include="w13-s1.cpp" />
+    <ClCompile Include="w13-s2-1.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="5-b12.h" />
     <ClInclude Include="5-b7.h" />
+    <ClInclude Include="6-b4.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

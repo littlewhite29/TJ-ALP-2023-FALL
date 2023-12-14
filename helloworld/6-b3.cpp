@@ -4,30 +4,30 @@
 //using namespace std;
 //
 //
-//void binaryToDecimalism(char str[],int Binary)
+//void binaryToDecimalism(char str[], int Binary)
 //{
 //	unsigned int ans = 0;
-//	int len=0;
+//	int len = 0;
 //	unsigned int* a;
-//	char* p=str;
+//	char* p = str;
 //	for (; *p != '\0'; p++, len++);
 //	//cout << len << endl;
 //	unsigned int digit[32] = { 0 };
 //	p = str;
 //	a = digit;
-//	for (; *p!='\0'; p++, a++)
+//	for (; *p != '\0'; p++, a++)
 //	{
-//		*a =(unsigned int)(*p-'0');
+//		*a = (unsigned int)(*p - '0');
 //	}
 //	a = digit;
 //	for (int i = 0; i != len; i++, a++);
 //	a--;
-//	for (int i = len - 1; i >= 0; i--,a--) 
+//	for (int i = len - 1; i >= 0; i--, a--)
 //	{
 //		//cout << *a<<' ' << (unsigned int)pow(Binary, len - i - 1) * *a << endl;
-//		ans +=(unsigned int)pow(Binary, len - i - 1) * *a;
+//		ans += (unsigned int)pow(Binary, len - i - 1) * *a;
 //	}
-//	cout<<ans<<endl;
+//	cout << ans << endl;
 //}
 //
 //int main()

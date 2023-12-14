@@ -29,7 +29,7 @@
 //{
 //	for (int i = 1; i < STUDENT_NUMBER; i++)
 //	{
-//		for (int j = 1; j < STUDENT_NUMBER+1 - i; j++)
+//		for (int j = 1; j < STUDENT_NUMBER + 1 - i; j++)
 //		{
 //			if (ID[rank[j]] > ID[rank[j - 1]])
 //			{
@@ -52,4 +52,4 @@
 //		printf("%s %s %d\n", name[rank[i]], ID[rank[i]], score[rank[i]]);
 //	}
 //}
-//
+

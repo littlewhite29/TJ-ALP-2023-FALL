@@ -41,7 +41,7 @@
 //						}
 //						else
 //						{
-//							break;
+//							continue;
 //						}
 //					}
 //				}
@@ -62,9 +62,9 @@
 //	{
 //		for (int y = 0; y < 26; y++)
 //		{
-//			cout<<' '<< map[x][y];
+//			cout<< map[x][y] << ' ';
 //		}
-//		cout <<' ' << endl;
+//		cout << endl;
 //	}
 //	return 0;
 //}
