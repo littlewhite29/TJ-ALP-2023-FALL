@@ -179,6 +179,8 @@
     <ClCompile Include="6-b3.cpp" />
     <ClCompile Include="6-b4-main.cpp" />
     <ClCompile Include="6-b4-sub.cpp" />
+    <ClCompile Include="7-b1.cpp" />
+    <ClCompile Include="7-b2.cpp" />
     <ClCompile Include="helloworld.cpp" />
     <ClCompile Include="w08-s1.cpp" />
     <ClCompile Include="w08-s3.cpp" />
