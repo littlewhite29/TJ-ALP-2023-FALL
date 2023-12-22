@@ -192,6 +192,7 @@
     <ClCompile Include="w11-s3.cpp" />
     <ClCompile Include="w13-s1.cpp" />
     <ClCompile Include="w13-s2-1.cpp" />
+    <ClCompile Include="w15-s2.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="5-b12.h" />

@@ -210,6 +210,9 @@
     <ClCompile Include="7-b2.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="w15-s2.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="5-b7.h">
