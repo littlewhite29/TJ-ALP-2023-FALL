@@ -261,6 +261,7 @@ inner_map init_mine_sweeper(inner_map map)
 	if (row == -1 || col == -1)
 	{
 		cout << "游戏结束";
+		map.row = -1, map.col = -1;
 		return map;
 	}
 	map=generate_inner_map(map, row, col);
@@ -279,6 +280,10 @@ void mine_sweeper(inner_map map)
 	QueryPerformanceFrequency(&map.tick);	//获得计数器频率
 	QueryPerformanceCounter(&map.begin);	//获得初始硬件计数器计数
 	map=init_mine_sweeper(map);
+	if (map.col == -1 || map.row == -1)
+	{
+		return;
+	}
 	int row, col;
 	while(1)
 	{
@@ -334,6 +339,10 @@ void reveal_surrounding_place(inner_map *map, int row, int col)
 	{
 		reveal_surrounding_place(map, row, col-1);
 	}
+	if (row - 1 >= 0 && col - 1 >= 0)
+	{
+		reveal_surrounding_place(map, row-1, col - 1);
+	}
 	if (row + 1 <= (*map).row)
 	{
 		reveal_surrounding_place(map, row + 1, col);
@@ -341,6 +350,18 @@ void reveal_surrounding_place(inner_map *map, int row, int col)
 	if (col + 1 <= (*map).col)
 	{
 		reveal_surrounding_place(map, row, col + 1);
+	}
+	if (row + 1 <= (*map).row && col + 1 <= (*map).col)
+	{
+		reveal_surrounding_place(map, row + 1, col + 1);
+	}
+	if (row + 1 <= (*map).row && col - 1 > 0)
+	{
+		reveal_surrounding_place(map, row + 1, col - 1);
+	}
+	if (row + 1 <= (*map).col && row - 1 > 0)
+	{
+		reveal_surrounding_place(map, row - 1, col + 1);
 	}
 }
 

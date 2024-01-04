@@ -31,6 +31,8 @@ inner_map init_mine_sweeper(inner_map map);
 inner_map graph_init_mine_sweeper(inner_map map);
 void mine_sweeper(inner_map map);
 void graph_mine_sweeper(inner_map map);
+void reveal_surrounding_graph_place(inner_map* map, int row, int col);
+void update_single_block(inner_map* map, int row, int col);
 void reveal_surrounding_place(inner_map *map, int row, int col);
 void mine_clearance(struct inner_map* map,int *row,int*col);
 

@@ -9,7 +9,7 @@ bool check_victory(inner_map map)
 	{
 		for (int y = 0; y < map.col; y++)
 		{
-			if (map.play_map[x][y] == 'X' || map.play_map[x][y] == '&')
+			if (map.play_map[x][y] == 'X' || map.play_map[x][y] == '!')
 			{
 				count++;
 			}

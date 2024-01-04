@@ -162,7 +162,7 @@ void display_graph_play_map(inner_map map)
 			else  if (map.play_map[x][y] == '*' || map.play_map[x][y] == '!')
 			{
 				cct_setcolor(COLOR_RED, COLOR_BLACK);
-				cout <<setw(4)<< ' ';
+				cout << setw(4) << ' ';
 			}
 			else
 			{
@@ -186,16 +186,16 @@ void display_graph_play_map(inner_map map)
 				cout << ' ';
 				cout << setw(3) << map.play_map[x][y];
 			}
-			else if (map.play_map[x][y] == '*'||map.play_map[x][y]=='!')
+			else if (map.play_map[x][y] == '*' || map.play_map[x][y] == '!')
 			{
 				cct_setcolor(COLOR_RED, COLOR_BLACK);
 				cout << ' ';
 				cout << setw(3) << map.play_map[x][y];
 			}
-			else if (map.play_map[x][y]=='X')
+			else if (map.play_map[x][y] == 'X')
 			{
 				cct_setcolor(COLOR_YELLOW, COLOR_BLACK);
-				cout <<setw(4) <<' ';
+				cout << setw(4) << ' ';
 			}
 			else
 			{
@@ -245,7 +245,7 @@ void display_graph_play_map(inner_map map)
 	cout << resetiosflags(ios::left);
 }
 
-void mouse_action_control(inner_map *map, int* row, int* col)
+void mouse_action_control(inner_map* map, int* row, int* col)
 {
 	if (1) {
 		int X = 0, Y = 0;
@@ -253,6 +253,20 @@ void mouse_action_control(inner_map *map, int* row, int* col)
 		int keycode1, keycode2;
 		int loop = 1;
 		bool legal_place = false;
+
+		int count = 0;
+		for (int x = 0; x < (*map).row; x++)
+		{
+			for (int y = 0; y < (*map).col; y++)
+			{
+				if ((*map).play_map[x][y] == '!')
+				{
+					count++;
+				}
+			}
+		}
+		cct_gotoxy(0, 4 + (*map).row * 3 + 1);
+		cout << "left:" << map->mine_number - count << setw(10) << "";
 
 		cct_enable_mouse();
 		cct_setcursor(CURSOR_INVISIBLE);	//关闭光标
@@ -267,7 +281,7 @@ void mouse_action_control(inner_map *map, int* row, int* col)
 					int row, col;
 					col = X - 4, row = Y - 3;
 					row = row % 3, col = col % 6;
-					if (row < 2 && col < 4 && (Y - 3) / 3 < (*map).row && (X-3) / 6 < (*map).col)
+					if (row < 2 && col < 4 && (Y - 3) / 3 < (*map).row && (X - 3) / 6 < (*map).col)
 					{
 						legal_place = true;
 					}
@@ -296,7 +310,7 @@ void mouse_action_control(inner_map *map, int* row, int* col)
 						break;
 					case MOUSE_LEFT_BUTTON_CLICK:			//按下左键
 						cout << "按下左键      " << endl;
-						*col = (X - 4)/6, *row = (Y - 3) / 3;
+						*col = (X - 4) / 6, * row = (Y - 3) / 3;
 						loop = 0;
 						break;
 					case MOUSE_RIGHT_BUTTON_CLICK:			//按下右键
@@ -312,7 +326,20 @@ void mouse_action_control(inner_map *map, int* row, int* col)
 							{
 								(*map).play_map[*row][*col] = 'X';
 							}
-							display_graph_play_map(*map);
+							update_single_block(map, *row, *col);
+							count = 0;
+							for (int x = 0; x < (*map).row; x++)
+							{
+								for (int y = 0; y < (*map).col; y++)
+								{
+									if ((*map).play_map[x][y] == '!')
+									{
+										count++;
+									}
+								}
+							}
+							cct_gotoxy(0, 4 + (*map).row * 3 + 1);
+							cout << "left:" << map->mine_number - count << setw(2) << "";
 						}
 						break;
 					default:
@@ -327,7 +354,7 @@ void mouse_action_control(inner_map *map, int* row, int* col)
 						loop = 0;
 						break;
 					case 32:	//SPACE键
-						if((*map).type==9)
+						if ((*map).type == 9)
 						{
 							QueryPerformanceCounter(&(*map).end);
 							cct_gotoxy(0, 4 + (*map).col * 3);
@@ -340,10 +367,9 @@ void mouse_action_control(inner_map *map, int* row, int* col)
 				}//end of swicth(keycode1)
 			}//end of else if(ret == CCT_KEYBOARD_EVENT）
 		}
-
 		cct_disable_mouse();	//禁用鼠标
 		cct_setcursor(CURSOR_VISIBLE_NORMAL);	//打开光标
-		cct_gotoxy(0, 4 + (*map).col * 3);
+		cct_gotoxy(0, 4 + (*map).row * 3);
 	}
 }
 inner_map graph_init_mine_sweeper(inner_map map)
@@ -369,34 +395,129 @@ void graph_mine_sweeper(inner_map map)
 		mouse_action_control(&map, &row, &col);
 		if (row == -1 || col == -1)
 		{
-			cct_gotoxy(0, 4 + map.col * 3);
+			cct_gotoxy(0, 4 + map.row * 3);
 			cout << "游戏结束";
 			break;
 		}
 		if (map.play_map[row][col] == '!')
 		{
-			display_graph_play_map(map);
 			continue;
 		}
 		if (map.map[row][col] != '*')
 		{
-			reveal_surrounding_place(&map, row, col);
+			reveal_surrounding_graph_place(&map, row, col);
 			cout << endl;
-			display_graph_play_map(map);
 		}
 		else
 		{
 			map.play_map[row][col] = map.map[row][col];
-			display_graph_play_map(map);
-			cct_gotoxy(0, 4 + map.col * 3);
+			update_single_block(&map, row, col);
+			cct_gotoxy(0, 4 + map.row * 3);
 			cout << "踩雷!! 游戏失败\n";
 			return;
 		}
 		if (check_victory(map))
 		{
-			cct_gotoxy(0, 4 + map.col * 3);
+			cct_gotoxy(0, 4 + map.row * 3);
 			cout << "恭喜胜利,游戏结束\n";
 			break;
 		}
 	}
+}
+void reveal_surrounding_graph_place(inner_map* map, int row, int col)
+{
+	if ((*map).play_map[row][col] != 'X')
+	{
+		//cout << map.play_map[row][col];
+		return;
+	}
+	(*map).play_map[row][col] = (*map).map[row][col];
+	update_single_block(map, row, col);
+	//递归
+	if ((*map).play_map[row][col] != '0')
+	{
+		//cout << map.play_map[row][col];
+		return;
+	}
+	//display_play_map(map);
+	if (row - 1 >= 0)
+	{
+		reveal_surrounding_graph_place(map, row - 1, col);
+	}
+	if (col - 1 >= 0)
+	{
+		reveal_surrounding_graph_place(map, row, col - 1);
+	}
+	if (row - 1 >= 0 && col - 1 >= 0)
+	{
+		reveal_surrounding_graph_place(map, row - 1, col - 1);
+	}
+	if (row + 1 <= (*map).row)
+	{
+		reveal_surrounding_graph_place(map, row + 1, col);
+	}
+	if (col + 1 <= (*map).col)
+	{
+		reveal_surrounding_graph_place(map, row, col + 1);
+	}
+	if (row + 1 <= (*map).row && col + 1 <= (*map).col)
+	{
+		reveal_surrounding_graph_place(map, row + 1, col + 1);
+	}
+	if (row + 1 <= (*map).row && col - 1 > 0)
+	{
+		reveal_surrounding_graph_place(map, row + 1, col - 1);
+	}
+	if (row + 1 <= (*map).col && row - 1 > 0)
+	{
+		reveal_surrounding_graph_place(map, row - 1, col + 1);
+	}
+}
+void update_single_block(inner_map* map, int row, int col)
+{
+	cout << setiosflags(ios::left);
+	int X, Y;
+	X = col * 6 + 4, Y = row * 3 + 3;
+	cct_gotoxy(X, Y);
+	if ((*map).play_map[row][col] == 'X')
+	{
+		cct_setcolor(COLOR_YELLOW, COLOR_BLACK);
+		cout << setw(4) << ' ';
+	}
+	else  if ((*map).play_map[row][col] == '*' || (*map).play_map[row][col] == '!')
+	{
+		cct_setcolor(COLOR_RED, COLOR_BLACK);
+		cout << setw(4) << ' ';
+	}
+	else
+	{
+		cct_setcolor(COLOR_WHITE, COLOR_HBLACK);
+		cout << setw(4) << "";
+	}
+	//打印下一行
+	cct_gotoxy(X, Y + 1);
+	cct_setcolor(COLOR_WHITE, COLOR_HBLACK);
+	if ((*map).play_map[row][col] > '0' && (*map).play_map[row][col] < '9')
+	{
+		cct_setcolor(COLOR_WHITE, ((*map).play_map[row][col] - '0'));
+		cout << ' ';
+		cout << setw(3) << (*map).play_map[row][col];
+	}
+	else if ((*map).play_map[row][col] == '*' || (*map).play_map[row][col] == '!')
+	{
+		cct_setcolor(COLOR_RED, COLOR_BLACK);
+		cout << ' ';
+		cout << setw(3) << (*map).play_map[row][col];
+	}
+	else if ((*map).play_map[row][col] == 'X')
+	{
+		cct_setcolor(COLOR_YELLOW, COLOR_BLACK);
+		cout << setw(4) << ' ';
+	}
+	else
+	{
+		cout << setw(4) << "";
+	}
+	cout << resetiosflags(ios::left);
+	cct_setcolor();
 }
